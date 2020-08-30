@@ -1,7 +1,7 @@
 import fetch from "isomorphic-unfetch";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { Confirm, Button, Lodader, Loader } from "semantic-ui-react";
+import { Confirm, Button, Loader } from "semantic-ui-react";
 
 const Note = ({ note }) => {
   const [confirm, setConfirm] = useState(false);
