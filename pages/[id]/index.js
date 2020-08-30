@@ -34,6 +34,23 @@ const Note = ({ note }) => {
     }
   };
 
+  const handleChange = async (e) => {
+    const noteId = router.query.id;
+    try {
+      const res = await fetch(`http://localhost:3000/api/notes/${noteId}`, {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ ...note, completed: e.target.checked }),
+      });
+      // router.push("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="note-container">
       {isDeleting ? (
@@ -41,7 +58,17 @@ const Note = ({ note }) => {
       ) : (
         <>
           <h1>{note.title}</h1>
-          <p>{note.description}</p>
+          {/* <p>{note.description}</p> */}
+          <label>
+            <input
+              type="checkbox"
+              defaultChecked={note.completed}
+              onChange={handleChange}
+            />{" "}
+            {note.description}
+          </label>{" "}
+          <br />
+          <p>{new Date(note.createdAt).toDateString()}</p>
           <Button color="red" onClick={open}>
             Delete
           </Button>

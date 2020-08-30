@@ -5,9 +5,9 @@ import { Button, Card } from "semantic-ui-react";
 const Index = ({ notes }) => {
   return (
     <div className="note-container">
-      <h1>Your Notes</h1>
+      <h1>Your Notes:</h1>
       {notes.length === 0 ? (
-        <h1>No have Notes</h1>
+        <h1>Free time:)</h1>
       ) : (
         <div className="grid wrapper">
           {notes.map((note) => {
