@@ -40,7 +40,7 @@ const Note = ({ note }) => {
       const res = await fetch(`http://localhost:3000/api/notes/${noteId}`, {
         method: "PUT",
         headers: {
-          Accept: "application/json",
+          "Accept": "application/json",
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ ...note, completed: e.target.checked }),
@@ -68,7 +68,7 @@ const Note = ({ note }) => {
             {note.description}
           </label>{" "}
           <br />
-          <p>{new Date(note.createdAt).toDateString()}</p>
+          <p>{new Date(note.createdAt).toLocaleDateString("en-GB")}</p>
           <Button color="red" onClick={open}>
             Delete
           </Button>
